@@ -29,3 +29,11 @@ model.add(Dropout(0.5))
 model.add(Dense(units=1, activation='sigmoid'))
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+training_data_generator = ImageDataGenerator(rescale=1./255)
+training_set = training_data_generator.flow_from_directory('Dataset/PetImages/Train/',
+                                                           target_size=(INPUT_SIZE, INPUT_SIZE),
+                                                           batch_size=BATCH_SIZE,
+                                                           class_mode='binary')
+
+model.fit_generator(training_set, steps_per_epoch=STEPS_PER_EPOCH, epochs=EPOCHS, verbose=1)
