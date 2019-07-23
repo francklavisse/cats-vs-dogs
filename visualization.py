@@ -16,5 +16,5 @@ def display_random_pictures(prefix='Cat'):
         ax[int(idx / 3), idx % 3].set_title(prefix + '/' + img)
 
     plt.show()
-
+    
 display_random_pictures('Dog')
